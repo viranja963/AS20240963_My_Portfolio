@@ -1,15 +1,11 @@
-/* ==============================================================
-   PORTFOLIO WEBSITE - MAIN STYLESHEET
-   ============================================================== */
 
-/* ===== 1. RESET AND BASE STYLES ===== */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;  /* Makes sizing more predictable */
+    box-sizing: border-box; 
 }
 
-/* Smooth scrolling for all anchor links */
+
 html {
     scroll-behavior: smooth;
 }
@@ -18,32 +14,31 @@ body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     color: #333;
-    background: #0a0a0a;  /* Dark background for vibrant colors to pop */
-    overflow-x: hidden;   /* Prevent horizontal scroll */
+    background: #0a0a0a;  
+    overflow-x: hidden;   
 }
 
-/* ===== 2. UTILITY CLASSES ===== */
-/* Container: Centers content with max-width */
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* ===== 3. NAVIGATION ===== */
+
 #navbar {
-    position: fixed;      /* Stays at top when scrolling */
+    position: fixed;     
     top: 0;
     width: 100%;
     background: rgba(10, 10, 10, 0.95);
-    backdrop-filter: blur(10px);  /* Glassmorphism effect */
-    z-index: 1000;        /* Ensures it's above everything */
+    backdrop-filter: blur(10px);  
+    z-index: 1000;       
     padding: 15px 0;
     transition: all 0.3s ease;
     border-bottom: 2px solid transparent;
 }
 
-/* Changes border color when scrolled (JS adds this class) */
+
 #navbar.scrolled {
     border-bottom-color: #6c63ff;
 }
@@ -54,7 +49,7 @@ body {
     align-items: center;
 }
 
-/* Logo with gradient text */
+
 .logo a {
     font-size: 24px;
     font-weight: 700;
@@ -67,10 +62,10 @@ body {
 }
 
 .logo a:hover {
-    transform: scale(1.05);  /* Slight zoom on hover */
+    transform: scale(1.05);  
 }
 
-/* Navigation links */
+
 .nav-links {
     display: flex;
     list-style: none;
@@ -85,7 +80,7 @@ body {
     position: relative;
 }
 
-/* Underline animation on hover */
+
 .nav-links a::after {
     content: '';
     position: absolute;
@@ -107,7 +102,7 @@ body {
     color: #6c63ff;
 }
 
-/* ===== 4. HAMBURGER MENU (Mobile) ===== */
+
 .hamburger {
     display: none;
     flex-direction: column;
@@ -122,7 +117,7 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Animation when hamburger is clicked (JS toggles 'active') */
+
 .hamburger.active span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
 }
@@ -134,3 +129,120 @@ body {
 .hamburger.active span:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -5px);
 }
+
+
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+    overflow: hidden;
+    padding-top: 80px;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    position: relative;
+    z-index: 2;
+}
+
+
+.hero-text {
+    flex: 1;
+}
+
+.hero-text h1 {
+    font-size: 48px;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.glow-text {
+    animation: glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% { text-shadow: 0 0 20px rgba(108, 99, 255, 0.3); }
+    50% { text-shadow: 0 0 40px rgba(108, 99, 255, 0.6), 0 0 80px rgba(255, 107, 107, 0.3); }
+}
+
+
+.highlight {
+    background: linear-gradient(135deg, #6c63ff, #ff6b6b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.typing-text {
+    font-size: 24px;
+    color: #ccc;
+    margin-bottom: 20px;
+    min-height: 40px;
+}
+
+#typed-text {
+    color: #6c63ff;
+    font-weight: 600;
+    border-right: 3px solid #6c63ff;
+    animation: blink 0.7s step-end infinite;
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+.hero-description {
+    color: #888;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+
+.btn-primary {
+    background: linear-gradient(135deg, #6c63ff, #ff6b6b);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(108, 99, 255, 0.5);
+}
+
+
+.btn-secondary {
+    background: transparent;
+    color: #fff;
+    border: 2px solid #6c63ff;
+}
+
+.btn-secondary:hover {
+    background: #6c63ff;
+    transform: translateY(-3px);
+}
+
