@@ -63,7 +63,7 @@ jobs:
     # IMPORTANT: This environment must match your Pages settings
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: https://viranja963.github.io/AS20240963_My_Portfolio
     
     steps:
       - name: Deploy to GitHub Pages
@@ -73,4 +73,4 @@ jobs:
       - name: Deployment Success
         run: |
           echo "✅ Deployment successful!"
-          echo "🌐 Website: ${{ steps.deployment.outputs.page_url }}"
+          echo "🌐 Website: https://viranja963.github.io/AS20240963_My_Portfolio"
