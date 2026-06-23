@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     
     const roles = [
-        'Web Developer',
+        
         'UI/UX Designer',
         'Software Engineer',
         'Devops Engineer',
