@@ -1,0 +1,40 @@
+name: CI - Continuous Integration
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  validate:
+    name: Validate HTML
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      
+      - name: Validate HTML
+        uses: Cyb3r-Jak3/html5validator-action@v7.2.0
+        with:
+          root: ./
+          log_level: INFO
+        continue-on-error: true
+      
+      - name: Check Required Files
+        run: |
+          echo "Checking required files..."
+          [ -f index.html ] && echo "✅ index.html exists" || echo "❌ index.html missing"
+          [ -f style.css ] && echo "✅ style.css exists" || echo "⚠️ style.css missing"
+          [ -f script.js ] && echo "✅ script.js exists" || echo "⚠️ script.js missing"
+      
+      - name: Check File Sizes
+        run: |
+          echo "📊 File Sizes:"
+          [ -f index.html ] && echo "index.html: $(du -h index.html | cut -f1)"
+          [ -f style.css ] && echo "style.css: $(du -h style.css | cut -f1)"
+          [ -f script.js ] && echo "script.js: $(du -h script.js | cut -f1)"
