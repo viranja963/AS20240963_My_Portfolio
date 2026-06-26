@@ -106,3 +106,27 @@ const observer = new IntersectionObserver((entries) => {
     threshold: 0.5 });
 
    sections.forEach(section => observer.observe(section));
+
+
+   
+const skillBars = document.querySelectorAll('.skill-progress');
+
+const skillObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            
+            const progressBar = entry.target;
+            const width = progressBar.style.width;
+            progressBar.style.width = '0%';
+            
+            
+            setTimeout(() => {
+                progressBar.style.width = width;
+            }, 100);
+        }
+    });
+}, {
+    threshold: 0.5
+});
+
+skillBars.forEach(bar => skillObserver.observe(bar));
