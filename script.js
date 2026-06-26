@@ -130,3 +130,73 @@ const skillObserver = new IntersectionObserver((entries) => {
 });
 
 skillBars.forEach(bar => skillObserver.observe(bar));
+
+
+
+// 6. CONTACT FORM HANDLING
+// ============================================================
+const contactForm = document.getElementById('contactForm');
+
+
+contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    
+    const name = this.querySelector('input[type="text"]').value.trim();
+    const email = this.querySelector('input[type="email"]').value.trim();
+    const message = this.querySelector('textarea').value.trim();
+    
+  
+    if (!name || !email || !message) {
+        showFormMessage('Please fill in all fields.', 'error');
+        return;
+    }
+    
+   
+    if (!email.includes('@') || !email.includes('.')) {
+        showFormMessage('Please enter a valid email address.', 'error');
+        return;
+    }
+    
+   
+    showFormMessage('Message sent successfully! I\'ll get back to you soon.', 'success');
+    this.reset();
+});
+
+
+
+
+function showFormMessage(message, type) {
+   
+    const existingMessage = document.querySelector('.form-message');
+    if (existingMessage) {
+        existingMessage.remove();
+    }
+    
+    
+    const messageElement = document.createElement('div');
+    messageElement.className = `form-message ${type}`;
+    messageElement.textContent = message;
+    messageElement.style.cssText = `
+        padding: 15px 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+        font-weight: 600;
+        ${type === 'success' 
+            ? 'background: rgba(78, 205, 196, 0.2); color: #4ecdc4; border: 1px solid #4ecdc4;' 
+            : 'background: rgba(255, 107, 107, 0.2); color: #ff6b6b; border: 1px solid #ff6b6b;'
+        }
+        animation: fadeIn 0.5s ease;
+    `;
+    
+   
+    contactForm.appendChild(messageElement);
+    
+   
+    setTimeout(() => {
+        messageElement.style.opacity = '0';
+        messageElement.style.transition = 'opacity 0.5s ease';
+        setTimeout(() => messageElement.remove(), 500);
+    }, 5000);
+}
+
