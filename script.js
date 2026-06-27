@@ -239,4 +239,14 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 revealElements.forEach(element => revealObserver.observe(element));
 
+// ============================================================
+// 9. KEYBOARD ACCESSIBILITY
+// ============================================================
+document.addEventListener('keydown', function(e) {
+    // Close mobile menu with Escape key
+    if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+        navLinks.classList.remove('active');
+        hamburger.classList.remove('active');
+    }
+});
 
