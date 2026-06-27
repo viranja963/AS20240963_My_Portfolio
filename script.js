@@ -239,14 +239,16 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 revealElements.forEach(element => revealObserver.observe(element));
 
-// ============================================================
-// 9. KEYBOARD ACCESSIBILITY
-// ============================================================
+
 document.addEventListener('keydown', function(e) {
-    // Close mobile menu with Escape key
+    
     if (e.key === 'Escape' && navLinks.classList.contains('active')) {
         navLinks.classList.remove('active');
         hamburger.classList.remove('active');
     }
 });
 
+
+console.log('%c🎨 Portfolio Website', 'font-size: 24px; font-weight: bold; color: #6c63ff;');
+console.log('%cDesigned and developed with ❤️', 'font-size: 16px; color: #888;');
+console.log('%cCheck out the code on GitHub!', 'font-size: 14px; color: #4ecdc4;');
